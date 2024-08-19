@@ -1,0 +1,22 @@
+Software de calculo de matrizes
+	
+	Funções base:
+		Inserir matizes:
+		mostrar matrizes
+		atualizar uma matriz
+		apagar matriz
+		Soma:
+			escolher duas matizes
+			Condições:
+				As matrizes precisam ser do mesmo numero de linhas e colunas
+				as somas são efetuadas pelos elementos que ocupam a mesma posiução
+				ou seja posição 0x0 da matriz Asoma com a posição 0x0 da matriz b e assim por diante. neste caso foda-se as ordens dos numeros 
+			se a condição bater somar
+			perguntar se quer adicionar a matriz a lista de matrizes
+			
+		Subtração
+			Condições:
+				
+		multiplicalção 
+		Multiplicação de uma matriz por um numero real
+	
