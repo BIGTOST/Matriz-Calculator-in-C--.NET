@@ -5,9 +5,6 @@ namespace matrizCalculator
 {
     class Program
     {
-
-        
-
         public static void Main(string[] args)
         {
             int seletor=1;
@@ -27,10 +24,11 @@ namespace matrizCalculator
         }
 
         public static void mainMenu(int seletor)
-        {   int[,]  matriz1,
+        {
+            int[,]  matriz1,
                     matriz2,
                     resultado;
-            
+
             switch (seletor)
             {
                 case 1:
@@ -77,26 +75,25 @@ namespace matrizCalculator
                 row;
 
             //*definindo tamanho e os parametros da matriz
+            Console.WriteLine("quantas linhas terá a matriz?");
+            row = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("quantas colunas terá a matriz?");
             col = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("quantas Linhas terá a matriz?");
-            row = Convert.ToInt32(Console.ReadLine());
-
-            matriz = new int[col, row];
+            matriz = new int[row, col];
 
             for (int colCount = 0; colCount < col; colCount++)
             {
                 for (int rowCount = 0; rowCount < row; rowCount++)
                 {
                     Console.WriteLine($"Insira o valor da posição {colCount}x{rowCount} da matriz");
-                    matriz[colCount, rowCount] = Convert.ToInt32(Console.ReadLine());
+                    matriz[rowCount, colCount] = Convert.ToInt32(Console.ReadLine());
                 }
             }
 
             return matriz;
         }
-
         public static void mostrarMatriz(int[,] matriz)
         {
             //* mostrar o resultado
@@ -160,19 +157,25 @@ namespace matrizCalculator
             }
             return resultado;
         }
-         public static int[,] multiplicarMatrizes(int[,] matriz1, int[,] matriz2)
+        public static int[,] multiplicarMatrizes(int[,] matriz1, int[,] matriz2)
         {
-            int[,] resultado = new int[matriz1.GetLength(0), matriz1.GetLength(1)];
+            int rowMatriz1 = matriz1.GetLength(0) ,
+                colMatriz1 = matriz1.GetLength(1),
+                colMatriz2 = matriz2.GetLength(1);
+            int[,] resultado = new int[rowMatriz1, colMatriz2];
 
             //* verificar se as matrizes possuem o mesmo tamanho x e y
-            if (matriz1.GetLength(0) == matriz2.GetLength(0) && matriz1.GetLength(1) == matriz2.GetLength(1))
+            if (matriz1.GetLength(1) == matriz2.GetLength(0))
             {
-                for (int i = 0; i < matriz1.GetLength(0); i++)
+                for (int i = 0; i < rowMatriz1; i++)
                 {
-                    for (int j = 0; j < matriz1.GetLength(1); j++)
+                    for (int j = 0; j < colMatriz2 ; j++)
                     {
-                        //* realizar a soma
-                        resultado[i, j] = matriz1[i, j] + matriz2[i, j];
+                        resultado[i,j]=0;
+                        for(int k =0 ; k < colMatriz1 ; k++)
+                        {
+                            resultado[i,j] += matriz1[i,k] * matriz2[k,j];
+                        }
                     }
                 }
             }
